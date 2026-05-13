@@ -22,6 +22,7 @@ function init() {
  */
 function getRecipesFromStorage() {
 	// A9. TODO - Complete the functionality as described in this function
+	return JSON.parse(localStorage.getItem('recipes')) || [];
 	//           header. It is possible in only a single line, but should
 	//           be no more than a few lines.
 }
@@ -39,6 +40,12 @@ function addRecipesToDocument(recipes) {
 	//            create a <recipe-card> element for each one, and populate
 	//            each <recipe-card> with that recipe data using element.data = ...
 	//            Append each element to <main>
+	const main = document.querySelector('main');
+	recipes.forEach((recipe) => {
+		const recipeCard = document.createElement('recipe-card');
+		recipeCard.data = recipe;
+		main.append(recipeCard);
+	});
 }
 
 /**
